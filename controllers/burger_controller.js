@@ -6,23 +6,25 @@ let burger = require("../models/burger.js");
 
 router.get("/", function(req, res) {
     burger.selectAll(function(data) {
-        res.render("index", data);
+        let burgerObject = {
+            burgers: data
+        }
+        res.render("index", burgerObject);
     });
 });
 
 router.post("/api/burgers", function(req, res) {
-    burger.insertOne([
-        "burgers"
-    ],[
+    burger.insertOne(
+        [
         "burger_name"
     ],[
         req.body.burger_name
-    ], function(result) {
-        res.json({ id: result.insertId })
+    ], function(data) {
+        res.redirect("/")
     });
 });
 
-router.put("/api/cats/:burger_name", function(req,res) {
+router.put("/api/:burger_name", function(req,res) {
     let condition = req.params.burger_name;
     burger.updateOne("burgers", devoured, req.body.devoured, condition, function(result) {
         if (result.changedRows == 0) {
@@ -32,3 +34,4 @@ router.put("/api/cats/:burger_name", function(req,res) {
           }
     })
 })
+module.exports = router;

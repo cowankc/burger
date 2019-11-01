@@ -2,13 +2,13 @@ let connection = require("./connection");
 
 let orm = {
     selectAll: function(tableInput, cb) {
-        let queryString = "SELECT * FROM " + tableInput;
+        let queryString = "SELECT * FROM " + tableInput + ";";
         console.log(queryString);
         connection.query(queryString, function(err, result){
             if (err) {
             throw err;
             }
-            cb(results)
+            cb(result)
         })
     },
     insertOne: function (tableInput, cols, vals, cb){
@@ -17,9 +17,7 @@ let orm = {
         queryString += " (";
         queryString += cols.toString();
         queryString += ") ";
-        queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
-        queryString += ") ";
+        queryString += "VALUES = ? ";
         console.log(queryString);
         connection.query(queryString, vals, function (err, result) {
             if (err) {

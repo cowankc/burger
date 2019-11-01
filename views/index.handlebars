@@ -1,9 +1,44 @@
-<h1>Eat The Burger!</h1>
+<h1 class="offset-lg-5">Eat The Burger!</h1>
 
-<form>
-  <div class="form-group">
-    <label for="burgerBox">Enter Your Burgers Here</label>
-    <input type="text" class="form-control" id="burgerBox" placeholder="Enter Burger">
+<container>
+  <div class="row">
+    <h2>Uneaten Burger List</h2>
+    <ul>
+      {{#each Burgers}}
+        {{#unless this.devoured}}
+          <div>
+            <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+              <button type="submit" class="uneatenBurger"> {{this.burger_name}}</button>
+             </form>
+          </div>
+        {{/unless}}
+      {{/each}}
+    </ul>
   </div>
-  <button type="submit" id="submit"class="btn btn-primary">Submit</button>
-</form>
+  <div class="row">
+    <h2>Eaten Burgers</h2>
+    <ul>
+      {{#each Burgers}}
+        {{#if this.devoured}}
+        <div class="eatenBurger">
+              <h3>
+                {{this.burger_name}}
+              </h3>
+            </div>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</container>
+
+<h2>Add a New Burger!</h2>
+<div class="row">
+  <form class="offset-lg-5" action="/api/burgers" method="POST">
+    <div class="form-group">
+      <label for="burgerBox">Enter Your Burgers Here</label>
+      <input type="text" class="form-control" id="burgerBox" placeholder="Enter Burger">
+    </div>
+    <button type="submit" id="submit"class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
