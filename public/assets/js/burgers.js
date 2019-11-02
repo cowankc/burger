@@ -2,10 +2,10 @@ $(function() {
     $("#submit").on("click", function(event) {
         event.preventDefault();
         let newBurger = {
-            burger_name: $("#burgerBox").val().trim(),
+            burger_name: $("#enterBurger").val().trim(),
             devoured: false
         };
-        $.ajax("/api/burgers", {
+        $.ajax("/burgers", {
             type: "POST",
             data: newBurger
         }).then(function(){

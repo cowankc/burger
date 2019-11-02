@@ -1,5 +1,13 @@
 let connection = require("./connection");
 
+function questionMarks(num) {
+	let arr = [];
+	for (let i = 0; i < num; i++) {
+		arr.push("?");
+	}
+	return arr.toString();
+}
+
 let orm = {
     selectAll: function(tableInput, cb) {
         let queryString = "SELECT * FROM " + tableInput + ";";
@@ -15,9 +23,11 @@ let orm = {
         let queryString = "INSERT INTO " + tableInput;
         
         queryString += " (";
-        queryString += cols.toString();
-        queryString += ") ";
-        queryString += "VALUES = ? ";
+		queryString += cols.toString();
+		queryString += ") ";
+		queryString += "VALUES (";
+		queryString += "'" + vals.toString() + "'";
+		queryString += ") ";
         console.log(queryString);
         connection.query(queryString, vals, function (err, result) {
             if (err) {

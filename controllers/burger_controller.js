@@ -13,24 +13,33 @@ router.get("/", function(req, res) {
     });
 });
 
-router.post("/api/burgers", function(req, res) {
+router.get("/api/burgers", function(req, res) {
+    burger.selectAll(function(data) {
+        let burgerObject = {
+            burgers: data
+        }
+        res.json(burgerObject);
+    });
+});
+
+router.post("/burgers", function(req, res) {
     burger.insertOne(
         [
         "burger_name"
     ],[
-        req.body.burger_name
+        req.body.burgerBox
     ], function(data) {
         res.redirect("/")
     });
 });
 
-router.put("/api/:burger_name", function(req,res) {
-    let condition = req.params.burger_name;
-    burger.updateOne("burgers", devoured, req.body.devoured, condition, function(result) {
-        if (result.changedRows == 0) {
+router.put("/burgers/:id", function(req,res) {
+    let condition = "id = " + req.params.id;
+    burger.updateOne({devoured: true}, condition, function(data) {
+        if (data.changedRows == 0) {
             return res.status(404).end();
           } else {
-            res.status(200).end();
+            res.redirect('/')
           }
     })
 })
