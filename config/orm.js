@@ -36,7 +36,7 @@ let orm = {
               cb(result);
         })
     },
-    updateOne: function (tableInput, col, value, selection, CB){
+    updateOne: function (tableInput, col, value, selection, cb){
         let queryString = "UPDATE " + tableInput;
         queryString += " SET " + col;
         queryString += " = " + value;

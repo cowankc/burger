@@ -40,7 +40,7 @@ router.put("/burgers/:id", function(req,res) {
         if (data.changedRows == 0) {
             return res.status(404).end();
           } else {
-            res.redirect('/')
+            res.status(200).end();
           }
     })
 })

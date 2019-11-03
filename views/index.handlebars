@@ -8,7 +8,7 @@
         {{#unless this.devoured}}
           <div>
             <form>
-              <button type="submit" class="uneatenBurger"> {{this.burger_name}}</button>
+              <button type="submit" class="uneatenBurger" data-id="{{this.id}}" data-newDevoured="{{devour}}"> {{this.burger_name}}</button>
              </form>
           </div>
         {{/unless}}
