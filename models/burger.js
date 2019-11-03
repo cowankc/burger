@@ -15,6 +15,11 @@ let burger = {
         orm.updateOne("burgers", col, value, selection, function(res) {
             cb(res);
         })
+    },
+    deleteOne: function(selection, cb) {
+        orm.deleteOne("burgers", selection, function(res) {
+            cb(res);
+        });
     }
 };
 

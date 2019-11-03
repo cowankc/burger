@@ -50,6 +50,19 @@ let orm = {
         
               cb(result);
             });
+    },
+    deleteOne: function(table, selection, cb) {
+        var queryString = "DELETE FROM " + table;
+        queryString += " WHERE ";
+        queryString += selection;
+
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err
+            }
+            cb(result);
+        });
     }
 }
 
