@@ -1,8 +1,18 @@
 {
   "name": "burger",
   "version": "1.0.0",
-  "description": "restaurant app to log burgers",
-  "main": "index.js",
+  "description": "burger ",
+  "main": "server.js",
+  "dependencies": {
+    "2": "^2.0.0",
+    "ajax": "^0.0.4",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handlebars": "^4.5.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^2.0.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -12,21 +22,12 @@
     "url": "git+https://github.com/cowankc/burger.git"
   },
   "keywords": [
-    "burger"
+    "burgers"
   ],
   "author": "kevin cowan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cowankc/burger/issues"
   },
-  "homepage": "https://github.com/cowankc/burger#readme",
-  "dependencies": {
-    "2": "^2.0.0",
-    "ajax": "0.0.4",
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "handlebars": "^4.5.1",
-    "mysql": "^2.17.1",
-    "mysql2": "^2.0.0"
-  }
+  "homepage": "https://github.com/cowankc/burger#readme"
 }
