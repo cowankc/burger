@@ -26,17 +26,17 @@ router.get("/api/burgers", function(req, res) {
 router.post("/burgers", function(req, res) {
     burger.insertOne(
         [
-        "burger_name"
+        ["burger_name"]
     ],[
-        req.body.burgerBox
+        req.body.burger_name
     ], function(data) {
-        res.redirect("/")
+        res.json({ id: data.insertId });
     });
 });
 
 router.put("/burgers/:id", function(req,res) {
     let condition = "id = " + req.params.id;
-    burger.updateOne({devoured: true}, condition, function(data) {
+    burger.updateOne("devoured", req.body.devoured, condition, function(data) {
         if (data.changedRows == 0) {
             return res.status(404).end();
           } else {

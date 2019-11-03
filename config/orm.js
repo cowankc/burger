@@ -26,7 +26,7 @@ let orm = {
 		queryString += cols.toString();
 		queryString += ") ";
 		queryString += "VALUES (";
-		queryString += "'" + vals.toString() + "'";
+		queryString += questionMarks(vals.length);
 		queryString += ") ";
         console.log(queryString);
         connection.query(queryString, vals, function (err, result) {
@@ -37,10 +37,11 @@ let orm = {
         })
     },
     updateOne: function (tableInput, col, value, selection, CB){
-        let queryString = "UPDATE" + tableInput;
-        queryString += " SET" + col;
+        let queryString = "UPDATE " + tableInput;
+        queryString += " SET " + col;
         queryString += " = " + value;
-        queryString += " WHERE burger_name = " + selection;
+        queryString += " WHERE "; 
+        queryString += selection;
         console.log(queryString);
         connection.query(queryString, function(err, result){
             if (err) {

@@ -7,7 +7,7 @@
       {{#each burgers}}
         {{#unless this.devoured}}
           <div>
-            <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+            <form>
               <button type="submit" class="uneatenBurger"> {{this.burger_name}}</button>
              </form>
           </div>
@@ -35,7 +35,7 @@
 <div class="row">
   <h2 class="offset-lg-5 col-lg-7">Add a New Burger!</h2>
   <div class="offset-lg-5">
-    <form action="/burgers" method="POST">
+    <form>
       <div class="form-group">
         <label for="burgerBox">Enter Your Burgers Here</label>
         <input type="text" class="form-control" id="enterBurger" name="burgerBox" placeholder="Enter Burger">
@@ -43,4 +43,8 @@
       <button type="submit" id="submit"class="btn btn-primary">Submit</button>
     </form>
   </div>
+</div>
+
+<div>
+  <img src="/assets/images/burger.png" height="300px" width="auto">
 </div>
