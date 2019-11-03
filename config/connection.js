@@ -3,7 +3,8 @@ let mysql = require("mysql");
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
-     connection = mysql.createConnection({
+    connection = mysql.createPool({
+    connectionLimit: 15,
     host: "localhost",
     port: 3306,
     user: "root",
@@ -11,7 +12,7 @@ if (process.env.JAWSDB_URL) {
     database: "burgers_db"
 });
 }
-connection.connect(function(err) {
+connection.getConnection(function(err, connection) {
     if (err) {
         console.error("error connecting: " + err.stack);
     return;
