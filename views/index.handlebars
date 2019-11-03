@@ -1,8 +1,8 @@
-<h1 class="offset-lg-5">Eat The Burger!</h1>
+<h1 class="offset-lg-4 title mt-3 text-success display-3 font-weight-bolder">Eat The Burger!</h1>
 
 <container class="row">
   <div class="offset-lg-2 col-lg-4">
-    <h2>Uneaten Burger List</h2>
+    <h2 class="text-warning"><u>Uneaten Burger List</u></h2>
     <ul>
       {{#each burgers}}
         {{#unless this.devoured}}
@@ -16,7 +16,7 @@
     </ul>
   </div>
   <div class="offset-lg-2 col-lg-4">
-    <h2>Eaten Burgers List</h2>
+    <h2 class="text-danger"><u>Eaten Burgers List</u></h2>
     <ul>
       {{#each burgers}}
         {{#if this.devoured}}
@@ -31,18 +31,18 @@
 
 
 <div class="row">
-  <h2 class="offset-lg-5 col-lg-7">Add a New Burger!</h2>
+  <h2 class="offset-lg-5 col-lg-7 text-success"><u>Add a New Burger!</u></h2>
   <div class="offset-lg-5">
     <form>
       <div class="form-group ml-5">
         <label for="burgerBox">Enter Your Burgers Here</label>
         <input type="text" class="form-control" id="enterBurger" name="burgerBox" placeholder="Enter Burger">
       </div>
-      <button type="submit" id="submit"class="btn btn-primary ml-5">Submit</button>
+      <button type="submit" id="submit"class="btn btn-primary offset-lg-5">Submit</button>
     </form>
   </div>
 </div>
 
 <div>
-  <img src="/assets/images/burger.png" height="300px" width="auto">
+  <img src="/assets/images/burger.png" height="250px" width="auto">
 </div>
